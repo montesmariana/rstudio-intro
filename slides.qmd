@@ -1,0 +1,158 @@
+---
+title: "RStudio intro and tips"
+author: "Mariana Montes"
+format:
+  revealjs:
+    theme: blood
+    embed-resources: true
+---
+
+## Outline
+
+- Panes
+- Projects
+- Settings
+- Add-ins
+
+# Panes
+
+## Panes
+
+- Source, eventually dataframe views
+- **Console**, terminal, background jobs
+- History, environment, packages, git...
+- Files, plots, help, tutorials (for `{learnr}`), viewer, presentation
+
+::: callout-tip
+The order and organization can be changed in Tools > Global options
+:::
+
+## Terminal
+
+::: callout-info
+For bash operations, for users with terminal experience.
+:::
+
+- For git, users with little experience may prefer the GUI in the other panel
+- For file manipulation, users might prefer the file explorer
+
+## History
+
+::: callout-info
+What has happened in the console
+:::
+
+- Recommended setup of wiping it out.
+
+- If someone comes to you with mysterious problems, the first step to reproduce is to restart the session with a clean history (and environment)
+
+## Environment
+
+- What is in memory, i.e. variables and functions (not exported from packages I think).
+
+- Also recommended to start afresh.
+
+## Console
+
+- For interactive typing of code
+
+- You can go up the history
+
+- Unhandy for multiple lines
+
+- It won't (shouldn't) survive across sessions.
+
+- Very handy for exploring the use of functions, the content of variables (things that print and that don't need/have to be in scripts)
+
+## Help: what and how
+
+- where you can see the documentation of functions.
+
+- You can search for a function in a search box, or more typically by typing `?` and the function
+
+## Help: Package documentation
+
+- R functions are typically very thoroughly documented, but older (e.g. base) documentation is often quite cryptic. Tidyverse functions have very nice documentation, vignettes, examples...
+
+- Functions in the tidyverse world also have prefix for each package, which helps with autocomplete and querying for possible functions if you don't know the name
+
+- Packages with datasets should also have docs for the datasets: it would be good for researchers to make packages of their functions (if they write any) and maybe datasets (if they reuse them), it is not as hard as it sounds
+
+## Plots: what
+
+- If you plot something interactively (unlike @fig-plot) it will show up here
+
+```{r}
+#| label: fig-plot
+#| fig-cap: A plot in a document
+plot(1:10, 11:20)
+```
+
+
+## Plots: packages
+
+- The base `plot()` will render it in whatever size the panel has, so you may get an error if the panel is too small.
+
+- `ggplot2::ggplot()` and family won't care about the size of the panel, and you can resize it after rendering without errors.
+
+## Source: what
+
+Where you write your source code, but also any other plain text file.
+
+- `View(variable)` or clicking on the variable of a dataframe or opening a tabular file as a variable will open the dataframe in this panel. I don't particularly like it compared to exploring the dataframe on the console
+
+- Ctrl+F will search for things in the file, and it is easy to also replace, once or on all occasions. It also uses regex if necessary. Ctrl+Shift+F will search in a *project*
+
+- RMarkdown and Quarto let you alternate narration/documentation and code, e.g. to write data-informed papers, slides with code, etc. RStudio can help with the view of the file, the rendering (Background job), etc.
+
+## Source: R files
+
+- e.g. hierarchical comments and outline, automatic formatting
+- shortcuts, at least for `<-` and `|>`
+- Ctrl+Enter to run and go to next line/block; sourcing file; sourcing on save
+- How to (un)comment
+- Inline debugger
+
+# Projects
+
+## Projects: what?
+
+- Folders with an .Rproject file inside.
+
+- They can be a git repository at the same time.
+
+- Easy to open and manage in R Studio
+
+## Encapsultation
+
+Keep your code, its inputs and outputs, its docs, are all together. 
+
+- If you work on different things simultaneously. You can open them as encapsulated things in R Studio, and have several open at once in different windows without them interacting with each other.
+
+- Reopening a project in RStudio can keep the same files open, and the root of the project is the root of the file explorer.
+
+## Reproducibility
+
+- Let a set of data and code to move around together, so that others can run it or you can run it somewhere else.
+
+0 With `{here}`, you can use paths relative to the root of the project, independent of where the project lives in a particular computer.
+
+- In non-HPC systems, `{renv}` is a good way of keeping track of the packages for a certain project and their versions.
+
+# Settings
+
+## Tools > Global options
+
+- Graphic engine (e.g. agg for emojis with `{ragg}` package)
+- Appearance
+- Pipe operator! (Native: `|>` vs magrittr (`%>%`), both same shortcut)
+- Git (e.g. SSH key)
+- (Not) storing history and data
+
+# Add-ins
+
+## Some packages with add-ins
+
+- `{todor}` for comments with "TODO" and stuff to keep track of notes
+- `{reprex}` to generate reproducible examples
+- `{learnr}` fills in the Tutorial tab
