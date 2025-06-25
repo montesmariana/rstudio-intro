@@ -1,10 +1,14 @@
 ---
 title: "RStudio intro and tips"
 author: "Mariana Montes"
+date: 2025-06-26
 format:
   revealjs:
-    theme: blood
+    theme: simple
     embed-resources: true
+    title-slide-attributes: 
+      data-background-image: img/title-background.png
+    parallax-background-image: img/normal-background.png
 ---
 
 ## Outline
@@ -29,7 +33,9 @@ The order and organization can be changed in Tools > Global options
 
 ## Terminal
 
-::: callout-info
+::: callout-note
+### What for?
+
 For bash operations, for users with terminal experience.
 :::
 
@@ -38,29 +44,42 @@ For bash operations, for users with terminal experience.
 
 ## History
 
-::: callout-info
+::: callout-note
+### What?
+
 What has happened in the console
 :::
 
-- Recommended setup of wiping it out.
+- Recommendation: uncheck "Always save history".
 
 - If someone comes to you with mysterious problems, the first step to reproduce is to restart the session with a clean history (and environment)
 
 ## Environment
 
-- What is in memory, i.e. variables and functions (not exported from packages I think).
 
-- Also recommended to start afresh.
+::: callout-note
+### What?
+
+Available variables and functions in the global environment.
+
+:::
+
+- Recommendation: uncheck "Restore .Rdata into workspace"
 
 ## Console
 
-- For interactive typing of code
+::: callout-note
+### What for?
+
+Interactive typing of code and where code that is run shows up.
+
+:::
 
 - You can go up the history
 
-- Unhandy for multiple lines
+- Unhandy for multiple lines - clean with Ctrl + L
 
-- It won't (shouldn't) survive across sessions.
+- It won't survive across sessions.
 
 - Very handy for exploring the use of functions, the content of variables (things that print and that don't need/have to be in scripts)
 
@@ -68,19 +87,23 @@ What has happened in the console
 
 - where you can see the documentation of functions.
 
-- You can search for a function in a search box, or more typically by typing `?` and the function
+- You can search for a function in a search box, or more typically by typing `?` and the function:
+
+    + `?print` for usage of the base `print` function
+    + `?stringr::str_count` or `?str_count` if the package was loaded
 
 ## Help: Package documentation
 
-- R functions are typically very thoroughly documented, but older (e.g. base) documentation is often quite cryptic. Tidyverse functions have very nice documentation, vignettes, examples...
+- R functions are typically very thoroughly documented, but older (e.g. base) documentation is often quite cryptic.
 
-- Functions in the tidyverse world also have prefix for each package, which helps with autocomplete and querying for possible functions if you don't know the name
+- Tidyverse functions have very nice documentation, vignettes, examples...
+  - These functions also tend to have prefixes for each package (for autocomplete and searching)
 
-- Packages with datasets should also have docs for the datasets: it would be good for researchers to make packages of their functions (if they write any) and maybe datasets (if they reuse them), it is not as hard as it sounds
+- Packages with datasets also document the datasets!
 
 ## Plots: what
 
-- If you plot something interactively (unlike @fig-plot) it will show up here
+- If you plot something interactively (unlike @fig-plot) it will show up in this panel
 
 ```{r}
 #| label: fig-plot
@@ -91,26 +114,41 @@ plot(1:10, 11:20)
 
 ## Plots: packages
 
-- The base `plot()` will render it in whatever size the panel has, so you may get an error if the panel is too small.
+- The base `plot()` will render it in whatever size the panel has, so you may get an error if the panel is too small: `Error in plot.new(): figure margins too large`.
 
 - `ggplot2::ggplot()` and family won't care about the size of the panel, and you can resize it after rendering without errors.
 
-## Source: what
+## Source
 
-Where you write your source code, but also any other plain text file.
+::: callout-note
+### What?
 
-- `View(variable)` or clicking on the variable of a dataframe or opening a tabular file as a variable will open the dataframe in this panel. I don't particularly like it compared to exploring the dataframe on the console
+Where you write your source code, but also view any other plain text file.
+:::
 
-- Ctrl+F will search for things in the file, and it is easy to also replace, once or on all occasions. It also uses regex if necessary. Ctrl+Shift+F will search in a *project*
+- Open a dataframe in this panel:
+    + `View(variable)`
+    + Clicking on the variable in Environment
 
-- RMarkdown and Quarto let you alternate narration/documentation and code, e.g. to write data-informed papers, slides with code, etc. RStudio can help with the view of the file, the rendering (Background job), etc.
+- Other files you can view: plain text, markdown (and Rmd, qmd...), python...
+
+## Source: keyboard shortcuts
+
+- Ctrl+F to search for things in a file.
+
+- Ctrl+Shift+F to search in a *project*.
+
+- Ctrl+F7 to open an extra source panel
 
 ## Source: R files
 
-- e.g. hierarchical comments and outline, automatic formatting
-- shortcuts, at least for `<-` and `|>`
-- Ctrl+Enter to run and go to next line/block; sourcing file; sourcing on save
-- How to (un)comment
+- Ctrl+Shift+C (or appropriate character) to (un)comment
+- Alt+- for the assignment operator `<- `
+- Ctrl+Shift+M for the pipe `|>` (or `%>%`)
+- Ctrl+Enter to run and go to next line/block
+- Automatic outline and sections: hierarchical comments with `# Heading ####`
+    + More `#` at the beginning increase level
+    + At least four `#`, `=` or `-` at the end
 - Inline debugger
 
 # Projects
@@ -125,17 +163,23 @@ Where you write your source code, but also any other plain text file.
 
 ## Encapsultation
 
-Keep your code, its inputs and outputs, its docs, are all together. 
+::: callout-tip
+Keep your code, its inputs and outputs, its docs, all together. 
+:::
 
-- If you work on different things simultaneously. You can open them as encapsulated things in R Studio, and have several open at once in different windows without them interacting with each other.
+- Open different projects in different windows without them interacting with each other.
 
-- Reopening a project in RStudio can keep the same files open, and the root of the project is the root of the file explorer.
+- Reopening a project in RStudio can keep the same files open.
+
+- The root of the project is the root of the file explorer.
 
 ## Reproducibility
 
-- Let a set of data and code to move around together, so that others can run it or you can run it somewhere else.
+::: callout-tip
+Let a set of data and code to move around together, so that others can run it or you can run it somewhere else.
+:::
 
-0 With `{here}`, you can use paths relative to the root of the project, independent of where the project lives in a particular computer.
+- With `{here}`, use paths relative to the root of the project, independent of where the project lives in a particular computer.
 
 - In non-HPC systems, `{renv}` is a good way of keeping track of the packages for a certain project and their versions.
 
@@ -143,9 +187,9 @@ Keep your code, its inputs and outputs, its docs, are all together.
 
 ## Tools > Global options
 
-- Graphic engine (e.g. agg for emojis with `{ragg}` package)
+- Graphic engine (e.g. agg for emojis in plots 😊)
 - Appearance
-- Pipe operator! (Native: `|>` vs magrittr (`%>%`), both same shortcut)
+- Pipe operator! (Native: `|>` vs magrittr (`%>%`)
 - Git (e.g. SSH key)
 - (Not) storing history and data
 
@@ -153,6 +197,10 @@ Keep your code, its inputs and outputs, its docs, are all together.
 
 ## Some packages with add-ins
 
+<!-- IDEA: illustrate interactively -->
+
 - `{todor}` for comments with "TODO" and stuff to keep track of notes
 - `{reprex}` to generate reproducible examples
 - `{learnr}` fills in the Tutorial tab
+
+<!-- TODO: thank audience -->
