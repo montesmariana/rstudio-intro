@@ -1159,8 +1159,8 @@ Mariana Montes
 <section id="outline" class="slide level2">
 <h2>Outline</h2>
 <ul>
-<li>Panes</li>
 <li>Projects</li>
+<li>Panes</li>
 <li>Settings</li>
 <li>Add-ins</li>
 </ul>
@@ -1178,6 +1178,60 @@ Mariana Montes
 </div>
 </div>
 </section>
+<section>
+<section id="projects" class="title-slide slide level1 center">
+<h1>Projects</h1>
+
+</section>
+<section id="projects-what" class="slide level2">
+<h2>Projects: what?</h2>
+<ul>
+<li><p>Folders with an .Rproject file inside.</p></li>
+<li><p>They can be a git repository at the same time.</p></li>
+<li><p>Easy to open and manage in R Studio</p></li>
+</ul>
+</section>
+<section id="encapsultation" class="slide level2">
+<h2>Encapsultation</h2>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p>Keep your code, its inputs and outputs, its docs, all together.</p>
+</div>
+</div>
+</div>
+<ul>
+<li><p>Open different projects in different windows without them interacting with each other.</p></li>
+<li><p>Reopening a project in RStudio can keep the same files open.</p></li>
+<li><p>The root of the project is the root of the file explorer.</p></li>
+</ul>
+</section>
+<section id="reproducibility" class="slide level2">
+<h2>Reproducibility</h2>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p>Let a set of data and code to move around together, so that others can run it or you can run it somewhere else.</p>
+</div>
+</div>
+</div>
+<ul>
+<li><p>With <code>{here}</code>, use paths relative to the root of the project, independent of where the project lives in a particular computer.</p></li>
+<li><p>In non-HPC systems, <code>{renv}</code> is a good way of keeping track of the packages for a certain project and their versions.</p></li>
+</ul>
+</section></section>
 <section>
 <section id="panes" class="title-slide slide level1 center">
 <h1>Panes</h1>
@@ -1369,60 +1423,6 @@ Figure 1: A plot in a document
 <li>At least four <code>#</code>, <code>=</code> or <code>-</code> at the end</li>
 </ul></li>
 <li>Inline debugger</li>
-</ul>
-</section></section>
-<section>
-<section id="projects" class="title-slide slide level1 center">
-<h1>Projects</h1>
-
-</section>
-<section id="projects-what" class="slide level2">
-<h2>Projects: what?</h2>
-<ul>
-<li><p>Folders with an .Rproject file inside.</p></li>
-<li><p>They can be a git repository at the same time.</p></li>
-<li><p>Easy to open and manage in R Studio</p></li>
-</ul>
-</section>
-<section id="encapsultation" class="slide level2">
-<h2>Encapsultation</h2>
-<div class="callout callout-tip callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Tip</strong></p>
-</div>
-<div class="callout-content">
-<p>Keep your code, its inputs and outputs, its docs, all together.</p>
-</div>
-</div>
-</div>
-<ul>
-<li><p>Open different projects in different windows without them interacting with each other.</p></li>
-<li><p>Reopening a project in RStudio can keep the same files open.</p></li>
-<li><p>The root of the project is the root of the file explorer.</p></li>
-</ul>
-</section>
-<section id="reproducibility" class="slide level2">
-<h2>Reproducibility</h2>
-<div class="callout callout-tip callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Tip</strong></p>
-</div>
-<div class="callout-content">
-<p>Let a set of data and code to move around together, so that others can run it or you can run it somewhere else.</p>
-</div>
-</div>
-</div>
-<ul>
-<li><p>With <code>{here}</code>, use paths relative to the root of the project, independent of where the project lives in a particular computer.</p></li>
-<li><p>In non-HPC systems, <code>{renv}</code> is a good way of keeping track of the packages for a certain project and their versions.</p></li>
 </ul>
 </section></section>
 <section>
